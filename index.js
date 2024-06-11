@@ -3,6 +3,8 @@ const dotenv = require("dotenv").config();
 const path = require("path");
 const userRoutes = require("./routes/user");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+const { checkCookieForAuthentication } = require("./middleware/auth");
 
 // express instance
 const app = express();
@@ -18,10 +20,14 @@ app.set("views", path.resolve("./views"));
 
 // middleware
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(checkCookieForAuthentication("token"));
 
 // routes
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", {
+    user: req.user,
+  });
 });
 app.use("/user", userRoutes);
 
