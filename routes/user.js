@@ -1,7 +1,5 @@
 const express = require("express");
 const User = require("../models/user");
-// const { createHmac } = require("crypto");
-// const { createToken } = require("../services/auth");
 
 const router = express.Router();
 

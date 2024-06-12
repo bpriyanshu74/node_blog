@@ -1,0 +1,5 @@
+-- page to display all the blogs
+
+-- page display one detailed blog
+
+-- page to display only single signed in user blog

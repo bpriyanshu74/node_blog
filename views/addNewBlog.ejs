@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>Home Page</title>
+  </head>
+  <body>
+    <%- include("./partials/navbar") %>
+    <div class="container mt-3">
+      <form action="/blog/add-new-blog" method="post">
+        <div class="mb-3">
+          <label for="upload" class="form-label">Upload</label>
+          <input
+            type="file"
+            name="upload"
+            class="form-control"
+            id="upload"
+            aria-describedby="upload"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            id="title"
+            aria-describedby="title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="floatingTextarea2">Body</label>
+          <textarea
+            name="body"
+            class="form-control"
+            id="body"
+            style="height: 100px"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <%-include("./partials/scripts") %>
+  </body>
+</html>

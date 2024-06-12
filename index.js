@@ -2,9 +2,11 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const path = require("path");
 const userRoutes = require("./routes/user");
+const blogRoutes = require("./routes/blog");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const { checkCookieForAuthentication } = require("./middleware/auth");
+const multer = require("multer");
 
 // express instance
 const app = express();
@@ -30,6 +32,7 @@ app.get("/", (req, res) => {
   });
 });
 app.use("/user", userRoutes);
+app.use("/blog", checkCookieForAuthentication, blogRoutes);
 
 // server
 app.listen(process.env.PORT, () => {
