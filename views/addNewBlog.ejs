@@ -5,17 +5,17 @@
     <title>Home Page</title>
   </head>
   <body>
-    <%- include("./partials/navbar") %>
+    <%- include("./partials/navbar") %> <%= JSON.stringify(user) %>
     <div class="container mt-3">
-      <form action="/blog/add-new-blog" method="post">
+      <form action="/blog/" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-          <label for="upload" class="form-label">Upload</label>
+          <label for="coverImage" class="form-label">Upload</label>
           <input
             type="file"
-            name="upload"
+            name="coverImage"
             class="form-control"
-            id="upload"
-            aria-describedby="upload"
+            id="coverImage"
+            aria-describedby="coverImage"
           />
         </div>
         <div class="mb-3">
