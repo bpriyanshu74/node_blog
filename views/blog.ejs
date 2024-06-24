@@ -13,6 +13,51 @@
       <img src="<%= blog.backgroundImage %>" width="800px" alt="img" />
       <pre mt-3><%=blog.body %></pre>
     </div>
-    <%-include("./partials/scripts") %>
+    <br />
+    <br />
+    <div class="container mt-4">
+      <img
+        src="<%= blog.createdBy.profileImageUrl %>"
+        width="100px"
+        alt="profile image"
+      />
+      <%= blog.createdBy.fullname %>
+    </div>
+
+    <div class="container mt-4">
+      <% if (locals.user) { %>
+      <form method="post" action="/blog/comment/<%= blog._id %>">
+        <div class="mb-3">
+          <input
+            type="text"
+            name="blogContent"
+            class="form-control"
+            id="blogContent"
+            aria-describedby="blogContent"
+            placeholder="Add your comment"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+      <% } %>
+    </div>
+
+    <div class="container mt-4">
+      <h2>Comments (<%= comments.length %>)</h2>
+    </div>
+
+    <div class="container mt-4">
+      <% if (locals.comments) { %> <% comments.forEach(comment => { %>
+      <div class="container">
+        <img
+          src="<%= blog.createdBy.profileImageUrl %>"
+          width="100px"
+          alt="profile image"
+        />
+        <%= blog.createdBy.fullname %>: <%= comment.blogContent %> <% }) %>
+      </div>
+      <% } %>
+    </div>
   </body>
 </html>

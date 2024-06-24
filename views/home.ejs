@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      img {
+        min-height: 200px;
+      }
+      .card-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .card {
+        border: 1px solid black;
+      }
+    </style>
     <%- include("./partials/head") %>
     <title>Home Page</title>
   </head>
   <body>
     <%- include("./partials/navbar") %>
 
-    <div class="container mt-3">
+    <div class="container mt-3 d-flex">
       <% blogs.forEach(blog => { %>
 
-      <div class="card" style="width: 18rem">
+      <div class="card m-3" style="width: 18rem">
         <img src="<%= blog.backgroundImage%>" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title"><%= blog.title%></h5>
